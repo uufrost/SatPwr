@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBoxOutputPower = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.buttonSetBatPara = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -50,7 +53,7 @@
             this.textBoxIsc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewError = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,9 +65,6 @@
             this.textBoxOpticalIntensity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBoxOutputPower = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -102,6 +102,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "电池参数";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(220, 113);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(11, 12);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "W";
+            // 
+            // textBoxOutputPower
+            // 
+            this.textBoxOutputPower.Location = new System.Drawing.Point(112, 110);
+            this.textBoxOutputPower.Name = "textBoxOutputPower";
+            this.textBoxOutputPower.ReadOnly = true;
+            this.textBoxOutputPower.Size = new System.Drawing.Size(100, 21);
+            this.textBoxOutputPower.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 113);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 12);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "当前输出功率：";
             // 
             // buttonSetBatPara
             // 
@@ -273,7 +299,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.listView1);
+            this.groupBox2.Controls.Add(this.listViewError);
             this.groupBox2.Location = new System.Drawing.Point(12, 217);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(535, 159);
@@ -281,24 +307,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "故障信息";
             // 
-            // listView1
+            // listViewError
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewError.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(3, 17);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(529, 139);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewError.GridLines = true;
+            this.listViewError.Location = new System.Drawing.Point(3, 17);
+            this.listViewError.Name = "listViewError";
+            this.listViewError.Size = new System.Drawing.Size(529, 139);
+            this.listViewError.TabIndex = 0;
+            this.listViewError.UseCompatibleStateImageBehavior = false;
+            this.listViewError.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "编号";
+            this.columnHeader1.Width = 40;
             // 
             // columnHeader2
             // 
@@ -308,7 +336,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "故障信息";
-            this.columnHeader3.Width = 285;
+            this.columnHeader3.Width = 220;
             // 
             // columnHeader4
             // 
@@ -377,32 +405,6 @@
             // 
             this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(220, 113);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(11, 12);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "W";
-            // 
-            // textBoxOutputPower
-            // 
-            this.textBoxOutputPower.Location = new System.Drawing.Point(112, 110);
-            this.textBoxOutputPower.Name = "textBoxOutputPower";
-            this.textBoxOutputPower.ReadOnly = true;
-            this.textBoxOutputPower.Size = new System.Drawing.Size(100, 21);
-            this.textBoxOutputPower.TabIndex = 25;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(7, 113);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(89, 12);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "当前输出功率：";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -429,7 +431,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxIsc;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewError;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

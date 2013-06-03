@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace Frost.SatPwr
 {
+    public enum PowerError
+    { 
+        电池片开路,
+        电池片参数变化,
+        电池片短路,
+        互连片开路,
+        导线焊点开焊,
+        接插件开路,
+        接插件短路,
+        隔离二极管开路,
+        隔离二极管内阻变大
+    }    
+    
     class SatellitePower
     {
         private double[] temprature = new double[12]{2, 2.3, 2, 2.8, 5, 7, 10, 13.6, 11.2, 10, 6, 3};
         private double[] opticalIntensity = new double[12]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
         private double np = 1;
         private double ns = 1;
+
+
 
         public double CurrentTemprature { get; set; } //当前温度
         public double CurrentOpticalIntensity { get; set; } //当前光强系数

@@ -14,6 +14,9 @@ namespace Frost.SatPwr
     {
         SatellitePower satellitePower;
         double outputPower;
+        int timerCounter = 0;
+        int errorCounter = 0;
+        Random rd = new Random();
 
         public MainForm()
         {
@@ -27,6 +30,20 @@ namespace Frost.SatPwr
 
         private void timerMain_Tick(object sender, EventArgs e)
         {
+            int errorId;
+            if (timerCounter % 5 == 0)
+            {
+                errorId = rd.Next(0, Enum.GetNames(typeof(PowerError)).Length);
+                ListViewItem li = new ListViewItem();
+                li.SubItems.Clear();
+                li.SubItems[0].Text = errorCounter++.ToString();
+                li.SubItems.Add(DateTime.Now.ToString());
+                li.SubItems.Add(Enum.Parse(typeof(PowerError), errorId.ToString()).ToString());
+                li.SubItems.Add("未处理");
+                listViewError.Items.Add(li);
+                listViewError.Items[(listViewError.Items.Count) - 1].EnsureVisible(); 
+            }
+            timerCounter++;
             outputPower = satellitePower.GetOutputPower();
             textBoxOutputPower.Text = outputPower.ToString("0.000000");
             textBoxTemprature.Text = satellitePower.CurrentTemprature.ToString();
