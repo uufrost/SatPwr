@@ -30,7 +30,7 @@ namespace Frost.SatPwr
             outputPower = satellitePower.GetOutputPower();
             textBoxOutputPower.Text = outputPower.ToString("0.000000");
             textBoxTemprature.Text = satellitePower.CurrentTemprature.ToString();
-            textBoxOpticalIntensity.Text = satellitePower.CuurentOpticalIntensity.ToString();
+            textBoxOpticalIntensity.Text = satellitePower.CurrentOpticalIntensity.ToString();
         }
 
         private void buttonSetBatPara_Click(object sender, EventArgs e)
