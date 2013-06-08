@@ -23,7 +23,7 @@ namespace Frost.SatPwr
             InitializeComponent();
 
             timerMain.Interval = 1000;
-            timerMain.Enabled = true;
+            timerMain.Enabled = false;
 
             satellitePower = new SatellitePower();
         }
@@ -31,7 +31,7 @@ namespace Frost.SatPwr
         private void timerMain_Tick(object sender, EventArgs e)
         {
             int errorId;
-            if (timerCounter % 5 == 0)
+            if (timerCounter % 15 == 0)
             {
                 errorId = rd.Next(0, Enum.GetNames(typeof(PowerError)).Length);
                 ListViewItem li = new ListViewItem();
@@ -63,6 +63,12 @@ namespace Frost.SatPwr
         private void MainForm_Load(object sender, EventArgs e)
         {
             buttonSetBatPara.PerformClick();
+        }
+
+        private void toggleButtonStart_Click(object sender, EventArgs e)
+        {
+            timerMain.Enabled = !timerMain.Enabled;
+            toggleButtonStart.ToggleState = timerMain.Enabled;
         }
     }
 }

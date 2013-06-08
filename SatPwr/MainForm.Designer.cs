@@ -65,6 +65,7 @@
             this.textBoxOpticalIntensity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
+            this.toggleButtonStart = new Frost.SatPwr.ToggleButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -405,11 +406,26 @@
             // 
             this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
+            // toggleButtonStart
+            // 
+            this.toggleButtonStart.FalsePrefixText = "开始";
+            this.toggleButtonStart.Location = new System.Drawing.Point(469, 395);
+            this.toggleButtonStart.Name = "toggleButtonStart";
+            this.toggleButtonStart.Size = new System.Drawing.Size(75, 23);
+            this.toggleButtonStart.SuffixText = "模拟";
+            this.toggleButtonStart.TabIndex = 3;
+            this.toggleButtonStart.Text = "开始模拟";
+            this.toggleButtonStart.ToggleState = false;
+            this.toggleButtonStart.TruePrefixText = "停止";
+            this.toggleButtonStart.UseVisualStyleBackColor = true;
+            this.toggleButtonStart.Click += new System.EventHandler(this.toggleButtonStart_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 388);
+            this.ClientSize = new System.Drawing.Size(559, 430);
+            this.Controls.Add(this.toggleButtonStart);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -463,6 +479,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxOutputPower;
         private System.Windows.Forms.Label label18;
+        private ToggleButton toggleButtonStart;
     }
 }
 
