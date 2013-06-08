@@ -65,7 +65,9 @@
             this.textBoxOpticalIntensity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
+            this.textBoxSimulateTime = new System.Windows.Forms.TextBox();
             this.toggleButtonStart = new Frost.SatPwr.ToggleButton();
+            this.timerDealError = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -406,6 +408,14 @@
             // 
             this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
+            // textBoxSimulateTime
+            // 
+            this.textBoxSimulateTime.Location = new System.Drawing.Point(15, 397);
+            this.textBoxSimulateTime.Name = "textBoxSimulateTime";
+            this.textBoxSimulateTime.ReadOnly = true;
+            this.textBoxSimulateTime.Size = new System.Drawing.Size(100, 21);
+            this.textBoxSimulateTime.TabIndex = 27;
+            // 
             // toggleButtonStart
             // 
             this.toggleButtonStart.FalsePrefixText = "开始";
@@ -420,11 +430,17 @@
             this.toggleButtonStart.UseVisualStyleBackColor = true;
             this.toggleButtonStart.Click += new System.EventHandler(this.toggleButtonStart_Click);
             // 
+            // timerDealError
+            // 
+            this.timerDealError.Interval = 2000;
+            this.timerDealError.Tick += new System.EventHandler(this.timerDealError_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 430);
+            this.Controls.Add(this.textBoxSimulateTime);
             this.Controls.Add(this.toggleButtonStart);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -438,6 +454,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -480,6 +497,8 @@
         private System.Windows.Forms.TextBox textBoxOutputPower;
         private System.Windows.Forms.Label label18;
         private ToggleButton toggleButtonStart;
+        private System.Windows.Forms.TextBox textBoxSimulateTime;
+        private System.Windows.Forms.Timer timerDealError;
     }
 }
 

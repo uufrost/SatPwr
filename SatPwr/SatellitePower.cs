@@ -36,6 +36,7 @@ namespace Frost.SatPwr
         public double Vmp { get; set; } //最佳功率点电压
         public double Imp { get; set; } //最佳功率点电流
         public double BatSize { get; set; } //太阳电池片尺寸
+        public int CurrentErrorId { get; set; } //当前错误id
 
         public SatellitePower()
         { 
@@ -45,6 +46,7 @@ namespace Frost.SatPwr
             Vmp = 2.276;
             Imp = BatSize * 0.01575;
             OutputVolt = Vmp;
+            CurrentErrorId = -1;
         }
 
         public double GetOutputPower()
