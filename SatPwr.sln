@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatPwr", "SatPwr\SatPwr.csproj", "{E2F44466-F02E-443C-915C-F55AFCB8145A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarPanel", "SolarPanel\SolarPanel.csproj", "{E2F44466-F02E-443C-915C-F55AFCB8145A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battery", "Battery\Battery.csproj", "{266EA2B7-4C8A-49A0-885B-974A2EEE6BE6}"
 EndProject
