@@ -66,8 +66,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.textBoxSimulateTime = new System.Windows.Forms.TextBox();
-            this.toggleButtonStart = new Frost.SatPwr.ToggleButton();
             this.timerDealError = new System.Windows.Forms.Timer(this.components);
+            this.toggleButtonStart = new Frost.SatPwr.ToggleButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -339,11 +339,12 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "故障信息";
-            this.columnHeader3.Width = 220;
+            this.columnHeader3.Width = 177;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "处理状态";
+            this.columnHeader4.Width = 153;
             // 
             // groupBox3
             // 
@@ -416,12 +417,17 @@
             this.textBoxSimulateTime.Size = new System.Drawing.Size(100, 21);
             this.textBoxSimulateTime.TabIndex = 27;
             // 
+            // timerDealError
+            // 
+            this.timerDealError.Interval = 2000;
+            this.timerDealError.Tick += new System.EventHandler(this.timerDealError_Tick);
+            // 
             // toggleButtonStart
             // 
             this.toggleButtonStart.FalsePrefixText = "开始";
-            this.toggleButtonStart.Location = new System.Drawing.Point(469, 395);
+            this.toggleButtonStart.Location = new System.Drawing.Point(441, 382);
             this.toggleButtonStart.Name = "toggleButtonStart";
-            this.toggleButtonStart.Size = new System.Drawing.Size(75, 23);
+            this.toggleButtonStart.Size = new System.Drawing.Size(103, 36);
             this.toggleButtonStart.SuffixText = "模拟";
             this.toggleButtonStart.TabIndex = 3;
             this.toggleButtonStart.Text = "开始模拟";
@@ -429,11 +435,6 @@
             this.toggleButtonStart.TruePrefixText = "停止";
             this.toggleButtonStart.UseVisualStyleBackColor = true;
             this.toggleButtonStart.Click += new System.EventHandler(this.toggleButtonStart_Click);
-            // 
-            // timerDealError
-            // 
-            this.timerDealError.Interval = 2000;
-            this.timerDealError.Tick += new System.EventHandler(this.timerDealError_Tick);
             // 
             // MainForm
             // 
@@ -447,6 +448,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "太阳能电池阵模拟器";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

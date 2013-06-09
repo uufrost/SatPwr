@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Frost.SatPwr</RootNamespace>
-    <AssemblyName>SatPwr</AssemblyName>
+    <AssemblyName>SolarPanel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,6 +48,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\ToggleButton.Designer.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

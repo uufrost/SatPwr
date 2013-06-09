@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
 
 namespace Frost.SatPwr
 {
@@ -14,10 +16,16 @@ namespace Frost.SatPwr
     {
         SatellitePower satellitePower;
         int startTime;
+        Color toggleButtonStartBackColor;
         double outputPower;
         int timerMainCounter = 0;
         int errorCounter = 0;
         Random rd = new Random();
+        UdpClient udpSolarPanel;
+        Global.SolarPanelInfo solarPanelInfo;
+        IPAddress localIP = IPAddress.Any;
+        const int localPort = 8001;
+        const int remotePort = 8002;
 
         public MainForm()
         {
@@ -25,8 +33,17 @@ namespace Frost.SatPwr
 
             timerMain.Interval = 1000;
             timerMain.Enabled = false;
-
             satellitePower = new SatellitePower();
+
+            foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    localIP = ip;
+                    break;
+                }
+            }
+            udpSolarPanel = new UdpClient(new IPEndPoint(localIP, localPort));
         }
 
         private void timerMain_Tick(object sender, EventArgs e)
@@ -49,6 +66,11 @@ namespace Frost.SatPwr
             textBoxOutputPower.Text = outputPower.ToString("0.000000");
             textBoxTemprature.Text = satellitePower.CurrentTemprature.ToString();
             textBoxOpticalIntensity.Text = satellitePower.CurrentOpticalIntensity.ToString();
+            solarPanelInfo.OutputPower = outputPower;
+            solarPanelInfo.CurrentErrorId = satellitePower.CurrentErrorId;
+            byte[] buf;
+            buf = Global.StructureToByteArray(solarPanelInfo);
+            udpSolarPanel.Send(buf, buf.Length, new IPEndPoint(localIP, remotePort));
 
             int simulateTime = Environment.TickCount - startTime;
             int tickSecond = simulateTime / 1000;
@@ -97,6 +119,7 @@ namespace Frost.SatPwr
         private void MainForm_Load(object sender, EventArgs e)
         {
             buttonSetBatPara.PerformClick();
+            toggleButtonStartBackColor = toggleButtonStart.BackColor;
         }
 
         private void toggleButtonStart_Click(object sender, EventArgs e)
@@ -106,7 +129,18 @@ namespace Frost.SatPwr
             if (timerMain.Enabled == true)
             {
                 startTime = Environment.TickCount;
+                toggleButtonStart.BackColor = Color.Red;
+
             }
+            else
+            {
+                toggleButtonStart.BackColor = toggleButtonStartBackColor;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            udpSolarPanel.Close();
         }
 
     }
