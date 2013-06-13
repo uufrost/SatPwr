@@ -23,6 +23,7 @@ namespace Frost.Battery
         int solarCurrentErrorId;
         IPAddress localIP = IPAddress.Any;
         const int localPort = 8002;
+        int udpTimeout = 0;
 
         public MainForm()
         {
@@ -71,6 +72,10 @@ namespace Frost.Battery
             solarOutputPower = solarPanelInfo.OutputPower;
             solarCurrentErrorId = solarPanelInfo.CurrentErrorId;
             textBoxSolarOutputPower.Text = solarOutputPower.ToString("0.000000");
+            udpTimeout = 0;
+            textBoxSolarStatue.Text = "已连接";
+            textBoxSolarStatue.BackColor = Color.Green;
+            textBoxSolarStatue.ForeColor = Color.White;
         }
 
         private void buttonSetBattery_Click(object sender, EventArgs e)
@@ -81,7 +86,7 @@ namespace Frost.Battery
             totalCapacity = Int32.Parse(comboBoxBatteryCount.SelectedItem.ToString()) * Double.Parse(textBoxMaxCapacity.Text);
             battery.totalCapacity = totalCapacity;
             textBoxTotalCapacity.Text = totalCapacity.ToString();
-
+            battery.CurrentCapacity = Double.Parse(textBoxCurrentCapacity.Text);
             volt = Double.Parse(textBoxVolt.Text);
             battery.Volt = volt;
         }
@@ -95,6 +100,45 @@ namespace Frost.Battery
         {
             threadListen.Abort();
             udpListen.close();
+        }
+
+        private void timerMain_Tick(object sender, EventArgs e)
+        {
+            udpTimeout++;
+            if (udpTimeout > 2)
+            {
+                textBoxSolarStatue.Text = "未连接";
+                textBoxSolarStatue.BackColor = Color.Red;
+                textBoxSolarStatue.ForeColor = Color.White;
+                solarOutputPower = 0;
+            }
+            double deltaPower;
+            deltaPower = solarOutputPower - loadPower;
+            if (deltaPower > 0)
+            {
+                if (battery.CurrentCapacity < battery.totalCapacity)
+                {
+                    textBoxBatteryStatue.Text = "正在充电";
+                    battery.CurrentCapacity += 0.1;
+                }
+                else
+                {
+                    textBoxBatteryStatue.Text = "待机";
+                }
+            }
+            else
+            {
+                if (battery.CurrentCapacity >= 0)
+                {
+                    textBoxBatteryStatue.Text = "正在放电";
+                    battery.CurrentCapacity -= 0.1;
+                }
+                else
+                {
+                    textBoxBatteryStatue.Text = "电量耗尽";
+                }
+            }
+            textBoxCurrentCapacity.Text = battery.CurrentCapacity.ToString();
         }
     }
 }

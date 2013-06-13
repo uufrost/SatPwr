@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -42,9 +43,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxCurrentCapacity = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxBatteryStatue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             this.buttonSetLoadPower = new System.Windows.Forms.Button();
             this.textBoxLoadPower = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -84,9 +86,9 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.textBoxCurrentCapacity);
             this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBoxBatteryStatue);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -218,13 +220,14 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "V";
             // 
-            // textBox5
+            // textBoxCurrentCapacity
             // 
-            this.textBox5.Location = new System.Drawing.Point(77, 136);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 11;
+            this.textBoxCurrentCapacity.Location = new System.Drawing.Point(77, 136);
+            this.textBoxCurrentCapacity.Name = "textBoxCurrentCapacity";
+            this.textBoxCurrentCapacity.ReadOnly = true;
+            this.textBoxCurrentCapacity.Size = new System.Drawing.Size(100, 21);
+            this.textBoxCurrentCapacity.TabIndex = 11;
+            this.textBoxCurrentCapacity.Text = "1000";
             // 
             // textBox4
             // 
@@ -234,13 +237,13 @@
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 10;
             // 
-            // textBox3
+            // textBoxBatteryStatue
             // 
-            this.textBox3.Location = new System.Drawing.Point(294, 136);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 9;
+            this.textBoxBatteryStatue.Location = new System.Drawing.Point(294, 136);
+            this.textBoxBatteryStatue.Name = "textBoxBatteryStatue";
+            this.textBoxBatteryStatue.ReadOnly = true;
+            this.textBoxBatteryStatue.Size = new System.Drawing.Size(100, 21);
+            this.textBoxBatteryStatue.TabIndex = 9;
             // 
             // label6
             // 
@@ -405,6 +408,7 @@
             this.textBoxLoadPower.Name = "textBoxLoadPower";
             this.textBoxLoadPower.Size = new System.Drawing.Size(100, 21);
             this.textBoxLoadPower.TabIndex = 12;
+            this.textBoxLoadPower.Text = "1";
             // 
             // label7
             // 
@@ -414,6 +418,12 @@
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 12;
             this.label7.Text = "负载功率：";
+            // 
+            // timerMain
+            // 
+            this.timerMain.Enabled = true;
+            this.timerMain.Interval = 1000;
+            this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
             // 
             // MainForm
             // 
@@ -447,9 +457,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxCurrentCapacity;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxBatteryStatue;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxSolarOutputPower;
         private System.Windows.Forms.Label label8;
@@ -471,6 +481,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxSolarStatue;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Timer timerMain;
     }
 }
 
